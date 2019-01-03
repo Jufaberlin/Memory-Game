@@ -1,9 +1,10 @@
+
  const icons = ["fa fa-diamond", "fa fa-paper-plane-o", "fa fa-anchor", "fa fa-bolt", "fa fa-cube", "fa fa-leaf", "fa fa-bicycle", "fa fa-bomb", "fa fa-diamond", "fa fa-paper-plane-o", "fa fa-anchor", "fa fa-bolt", "fa fa-cube", "fa fa-leaf", "fa fa-bicycle", "fa fa-bomb"];
  const deck = document.querySelector(".deck");
  const restart = document.querySelector(".restart");
 
  let openCards = [];
- let movesDisplay = document.querySelector("span").innerText;
+ let movesDisplay = document.querySelector("#moves");
  let movesScore = 0;
 
     // create new shuffled game board
@@ -22,18 +23,17 @@ function startGame() {
      li.appendChild(i);
      li.addEventListener("click", showSymbol);
   }
-} // works
+} // yes
 
    // clickevent with two clicks possible
 
 function showSymbol(event) {
-    if(openCards.length <= 1) { 
+    if(openCards.length <= 1) { // two cards can be opened now
         let clickedCard = event.target;
-        clickedCard.classList.add("show"); 
-        clickedCard.classList.add("open"); 
-        openCards.push(event.target); 
-        if(openCards.length == 2) { // works
-            movesScore++; // yes ----- but still no display?!?!?!!?
+        clickedCard.classList.add("show"); // yes
+        clickedCard.classList.add("open"); // yes
+        openCards.push(event.target); // yes
+        if(openCards.length == 2) {
             compareCards();
         }
     }
@@ -41,26 +41,27 @@ function showSymbol(event) {
 
 function compareCards() {
 
-    // if the cards match
- 
-    // doesn't work yet
+        // if the cards match
 
-  	if (openCards[0].dataset.card == openCards[1].dataset.card) {
-    		card.classList.add("match");
-    		openCards = [];
+  	if (openCards[0].innerHTML === openCards[1].innerHTML) {
+        openCards[0].classList.add("match");
+        openCards[1].classList.add("match");
+    		openCards = []; //works!!!
   	} else {
-    
+
         // if the cards don't match
 
         if(openCards.length == 2) {
             setTimeout(function() {
-                openCards.forEach(function(card) {
-                card.classList.remove("open", "show");
+                openCards.forEach(function(cards) {
+                cards.classList.remove("open", "show");
                 });
                 openCards = [];
-            }, 1000);
+            }, 1000); //works!!!
         }
     }
+    movesScore++;
+    movesDisplay.textContent = movesScore;
 }
 
 // Shuffle function from http://stackoverflow.com/a/2450976
@@ -78,9 +79,11 @@ function shuffle(array) {
     return array;
 }
 
-function restart() {
-    
-}
+// function restart() {
+//     openCards = [];
+//     movesScore = 0;
+// }
+
 
  startGame();
  restart.addEventListener("click", startGame);
