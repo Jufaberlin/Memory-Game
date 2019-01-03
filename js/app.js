@@ -23,16 +23,16 @@ function startGame() {
      li.appendChild(i);
      li.addEventListener("click", showSymbol);
   }
-} // yes
+}
 
    // clickevent with two clicks possible
 
 function showSymbol(event) {
-    if(openCards.length <= 1) { // two cards can be opened now
+    if(openCards.length <= 1) {
         let clickedCard = event.target;
-        clickedCard.classList.add("show"); // yes
-        clickedCard.classList.add("open"); // yes
-        openCards.push(event.target); // yes
+        clickedCard.classList.add("show"); 
+        clickedCard.classList.add("open"); 
+        openCards.push(event.target); 
         if(openCards.length == 2) {
             compareCards();
         }
@@ -46,7 +46,7 @@ function compareCards() {
   	if (openCards[0].innerHTML === openCards[1].innerHTML) {
         openCards[0].classList.add("match");
         openCards[1].classList.add("match");
-    		openCards = []; //works!!!
+    		openCards = []; 
   	} else {
 
         // if the cards don't match
@@ -57,7 +57,7 @@ function compareCards() {
                 cards.classList.remove("open", "show");
                 });
                 openCards = [];
-            }, 1000); //works!!!
+            }, 1000); 
         }
     }
     movesScore++;
@@ -78,12 +78,6 @@ function shuffle(array) {
 
     return array;
 }
-
-// function restart() {
-//     openCards = [];
-//     movesScore = 0;
-// }
-
 
  startGame();
  restart.addEventListener("click", startGame);
