@@ -5,19 +5,9 @@
  const deck = document.querySelector(".deck");
  const restart = document.querySelector(".restart");
 
- // cards zu selektieren geht nicht, weil sie nicht mehr in der html-datei sind
- // const cards = document.querySelectorAll(".card");
-
  let openCards = [];
  let movesDisplay = document.querySelector("span").innerText;
  let movesScore = 0;
-
-/*
- * Display the cards on the page
- *   - shuffle the list of cards using the provided "shuffle" method below
- *   - loop through each card and create its HTML
- *   - add each card's HTML to the page
- */
 
     // create new shuffled game board
 
