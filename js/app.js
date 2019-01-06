@@ -1,25 +1,21 @@
  const icons = ["fa fa-diamond", "fa fa-paper-plane-o", "fa fa-anchor", "fa fa-bolt", "fa fa-cube", "fa fa-leaf", "fa fa-bicycle", "fa fa-bomb", "fa fa-diamond", "fa fa-paper-plane-o", "fa fa-anchor", "fa fa-bolt", "fa fa-cube", "fa fa-leaf", "fa fa-bicycle", "fa fa-bomb"];
  const deck = document.querySelector(".deck");
- const restartButton = document.getElementsByClassName("restartButton");
+ const restart = document.querySelector(".restart");
  const movesDisplay = document.querySelector("#moves");
  const movesSummary = document.querySelector("#movesSummary");
  const minutesSummary = document.querySelector("#minutesSummary");
  const secondsSummary = document.querySelector("#secondsSummary");
 
-  // create new shuffled game board
+ let openCards = [];
+ let matchedCards = [];
+ let moves = 0;
+ let seconds = 0;
+ let minutes = 0;
 
-function resetValues() {
-   let openCards = [];
-   let matchedCards = [];
-   let moves = 0;
-   let seconds = 0;
-   let minutes = 0;
-}
-
+    // create new shuffled game board
 
 function startGame() {
   shuffle(icons);
-  resetValues();
   movesDisplay.textContent = moves;
 
   for (let j = 0; j < icons.length; j++) {
@@ -142,6 +138,7 @@ function shuffle(array) {
 
     return array;
 }
+
 
  startGame();
  restart.addEventListener("click", startGame);
