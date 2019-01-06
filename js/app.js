@@ -40,7 +40,7 @@ function showSymbol(event) {
         if(openCards.length == 2) {
           compareCards();
         }
-        if(matchedCards.length == 2) {
+        if(matchedCards.length == icons.length) {
           gameOver();
         }
         if(moves == 0 && openCards.length == 1) {
