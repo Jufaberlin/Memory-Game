@@ -23,6 +23,14 @@ let minutes = 0;
 function startGame() {
   shuffle(icons);
   movesDisplay.textContent = moves;
+  secondsDisplay.textContent = seconds;
+  openCards = [];
+  moves = 0;
+  seconds = 0;
+  minutes = 0;
+  secondsDisplay.textContent = seconds + "s";
+  minutesSummary.textContent = minutes + "m";
+  matchedCards = [];
 
   for (let j = 0; j < icons.length; j++) {
      let li = document.createElement("li");
@@ -140,12 +148,7 @@ function restart() {
   stars.forEach(function(starReset) {
     starReset.className = "fa fa-star";
   });
-  moves = 0;
-  seconds = 0;
-  minutes = 0;
-  secondsDisplay.textContent = seconds + "s";
-  minutesSummary.textContent = minutes + "m";
-  matchedCards = [];
+
   deck.innerHTML = "";
   startGame();
 }
