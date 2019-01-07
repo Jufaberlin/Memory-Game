@@ -1,18 +1,24 @@
- const icons = ["fa fa-diamond", "fa fa-paper-plane-o", "fa fa-anchor", "fa fa-bolt", "fa fa-cube", "fa fa-leaf", "fa fa-bicycle", "fa fa-bomb", "fa fa-diamond", "fa fa-paper-plane-o", "fa fa-anchor", "fa fa-bolt", "fa fa-cube", "fa fa-leaf", "fa fa-bicycle", "fa fa-bomb"];
- const deck = document.querySelector(".deck");
- const restart = document.querySelector(".restart");
- const movesDisplay = document.querySelector("#moves");
- const movesSummary = document.querySelector("#movesSummary");
- const minutesSummary = document.querySelector("#minutesSummary");
- const secondsSummary = document.querySelector("#secondsSummary");
+const icons = ["fa fa-diamond", "fa fa-paper-plane-o", "fa fa-anchor", "fa fa-bolt", "fa fa-cube", "fa fa-leaf", "fa fa-bicycle", "fa fa-bomb", "fa fa-diamond", "fa fa-paper-plane-o", "fa fa-anchor", "fa fa-bolt", "fa fa-cube", "fa fa-leaf", "fa fa-bicycle", "fa fa-bomb"];
+const deck = document.querySelector(".deck");
+const stars = Array.from(document.getElementsByClassName("fa-star"));
+const restartButton1 = document.querySelector("#restartButton1");
+const restartButton2 = document.querySelector("#restartButton2");
+const modal = document.querySelector(".modal");
+const modalStars = document.querySelector(".modal-stars");
+const movesDisplay = document.querySelector("#moves");
+const movesSummary = document.querySelector("#movesSummary");
+const secondsDisplay = document.querySelector("#seconds");
+const minutesDisplay = document.querySelector("#minutes");
+const minutesSummary = document.querySelector("#minutesSummary");
+const secondsSummary = document.querySelector("#secondsSummary");
 
- let openCards = [];
- let matchedCards = [];
- let moves = 0;
- let seconds = 0;
- let minutes = 0;
+let openCards = [];
+let matchedCards = [];
+let moves = 0;
+let seconds = 0;
+let minutes = 0;
 
-    // create new shuffled game board
+// creates a new shuffled game board - click eventListener
 
 function startGame() {
   shuffle(icons);
@@ -29,7 +35,7 @@ function startGame() {
   }
 }
 
-   // clickevent with two clicks possible
+   // clickevent with two clicks possible - shows two symbols and makes them disappear again
 
 function showSymbol(event) {
     let clickedCard = event.target;
@@ -51,6 +57,7 @@ function showSymbol(event) {
     }
 }
 
+// function to run the timer in seconds and minutes - display of the timer
 
 function runTimer() {
   seconds++;
@@ -58,9 +65,11 @@ function runTimer() {
     minutes++;
     seconds = 0;
   }
-  document.querySelector("#seconds").innerHTML = seconds + "s";
-  document.querySelector("#minutes").innerHTML = minutes + "m";
+  secondsDisplay.innerHTML = seconds + "s";
+  minutesDisplay.innerHTML = minutes + "m";
 }
+
+// function to compare the two open cards
 
 function compareCards() {
 
@@ -92,36 +101,53 @@ function compareCards() {
     starRating();
 }
 
+// function for the star rating
+
 function starRating() {
-  const star1 = document.querySelector("#star1");
-  const star2 = document.querySelector("#star2");
-  const star3 = document.querySelector("#star3");
+  const star3 = stars[2];
+  const star2 = stars[1];
+  const star1 = stars[0];
   if(moves >= 12 && moves <=17) {
-      star3.classList.remove("fa-star");
-      star3.classList.add("fa-star-o");
-  } else if(moves > 17 && moves <= 20) {
-      star3.classList.remove("fa-star");
-      star3.classList.add("fa-star-o");
-      star2.classList.remove("fa-star");
-      star2.classList.add("fa-star-o");
-  } else if(moves > 20) {
-      star3.classList.remove("fa-star");
-      star3.classList.add("fa-star-o");
-      star2.classList.remove("fa-star");
-      star2.classList.add("fa-star-o");
-      star1.classList.remove("fa-star");
-      star1.classList.add("fa-star-o");
+    star3.classList.remove("fa-star");
+    star3.classList.add("fa-star-o");
+  }
+  if(moves > 17 && moves <= 20) {
+    star2.classList.remove("fa-star");
+    star2.classList.add("fa-star-o");
+  }
+  if(moves > 22) {
+    star1.classList.remove("fa-star");
+    star1.classList.add("fa-star-o");
   }
 }
 
+// events when the game is over
+
 function gameOver() {
     clearInterval(timer);
-    const modal = document.querySelector(".modal");
     modal.classList.add("show-modal");
-    starRating();
+    modalStars.innerHTML = stars[0].outerHTML + stars[1].outerHTML + stars[2].outerHTML;
     movesSummary.textContent = moves;
     minutesSummary.textContent = minutes + "m";
     secondsSummary.textContent = seconds + "s";
+}
+
+// events when the restart button is clicked
+
+function restart() {
+  modal.classList.remove("show-modal");
+  clearInterval(timer);
+  stars.forEach(function(starReset) {
+    starReset.className = "fa fa-star";
+  });
+  moves = 0;
+  seconds = 0;
+  minutes = 0;
+  secondsDisplay.textContent = seconds + "s";
+  minutesSummary.textContent = minutes + "m";
+  matchedCards = [];
+  deck.innerHTML = "";
+  startGame();
 }
 
 // Shuffle function from http://stackoverflow.com/a/2450976
@@ -139,6 +165,8 @@ function shuffle(array) {
     return array;
 }
 
+//eventListeners for the two reset buttons - start of the game
 
- startGame();
- restart.addEventListener("click", startGame);
+restartButton1.addEventListener("click", restart);
+restartButton2.addEventListener("click", restart);
+startGame();

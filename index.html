@@ -12,8 +12,27 @@
 
     <div class="container">
         <header>
-            <h1>Matching Game</h1>
+          <h1>Matching Game</h1>
         </header>
+
+         <!-- modal window - pops up, when all cards are matchedCards -->
+
+        <div class="modal">
+          <div class="modal-content">
+            <h1>Congratulations!</h1>
+            <section>
+            	<ul class="modal-stars"></ul>
+            </section>
+            <p>It took you <strong><span id="movesSummary"></span></strong> moves and <strong><span id="minutesSummary"></span><span>:</span><span id="secondsSummary"></span></strong> to win!</p>
+            <p>Do you want to play again?</p>
+            <div id="restartButton2" class="restart">
+              <i class="fa fa-repeat"></i>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- score panel - star rating - moves - time - reset-button -->
 
         <section class="score-panel">
         	<ul class="stars">
@@ -22,12 +41,14 @@
         		<li><i class="fa fa-star"></i></li>
         	</ul>
 
-        	<span class="moves"></span> Moves
-
-            <div class="restart">
+        	<span id="moves">0</span> Moves
+            <span id="minutes">00</span>:<span id="seconds">00</span>
+            <div id="restartButton1" class="restart">
         		<i class="fa fa-repeat"></i>
         	</div>
         </section>
+
+        <!-- the game board - will be created in the js-file -->
 
         <ul class="deck">
 

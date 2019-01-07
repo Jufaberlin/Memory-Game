@@ -1,20 +1,21 @@
 # Memory Game Project
 
+This is a project for the Udacity Front-End Web Development Nanodegree Program.
+
 ## Table of Contents
 
-* [Instructions](#instructions)
-* [Contributing](#contributing)
+* [Game Instructions](#instructions)
+* [Sources](#sources)
 
-## Instructions
+## Game Instructions
 
-The starter project has some HTML and CSS styling to display a static version of the Memory Game project. You'll need to convert this project from a static project to an interactive one. This will require modifying the HTML and CSS files, but primarily the JavaScript file.
+This is a classical memory game with 16 cards. The cards will turn open if you click on them. If the symbols match, they will stay open. Otherwise the cards will turn back. 
+The goal of the game is it to remember the symbols position and find all matching cards in as little moves as possible.
 
-To get started, open `js/app.js` and start building out the app's functionality
+## Sources
 
-For specific, detailed instructions, look at the project instructions in the [Udacity Classroom](https://classroom.udacity.com/me).
+To create the game I got inspiration by the Udacity Nanodegree Progam and by the following online resources:
 
-## Contributing
-
-This repository is the starter code for _all_ Udacity students. Therefore, we most likely will not accept pull requests.
-
-For details, check out [CONTRIBUTING.md](CONTRIBUTING.md).
+* [MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
+* [w3scools](https://www.w3schools.com/js/default.asp)
+* [stackoverflow](https://stackoverflow.com/)

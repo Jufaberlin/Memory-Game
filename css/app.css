@@ -117,14 +117,14 @@ h1 {
     margin-bottom: 10px;
 }
 
-.score-panel .stars {
+.score-panel .stars, .modal .stars {
     margin: 0;
     padding: 0;
     display: inline-block;
     margin: 0 5px 0 0;
 }
 
-.score-panel .stars li {
+.score-panel .stars li, .modal-stars li {
     list-style: none;
     display: inline-block;
 }
@@ -132,4 +132,49 @@ h1 {
 .score-panel .restart {
     float: right;
     cursor: pointer;
+}
+
+.modal {
+    height: 300px;
+    width: 500px;
+    position: absolute;
+    z-index: 10;
+    border-radius: 8px;
+    text-align: center;
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#c72fed+0,2989d8+68 */
+    background: #c72fed; /* Old browsers */
+    background: -moz-linear-gradient(-45deg, #c72fed 0%, #2989d8 68%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(-45deg, #c72fed 0%,#2989d8 68%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(135deg, #c72fed 0%,#2989d8 68%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#c72fed', endColorstr='#2989d8',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+    visibility: hidden;
+}
+
+.show-modal {
+  opacity: 1;
+  visibility: visible;
+  transform: scale(1.0);
+  transition: visibility 0s linear 0s, opacity 0.25s 0s, transform 0.25s;
+}
+
+.modal h1 {
+  font-weight: bold;
+}
+
+.modal p {
+  font-size: 1em;
+}
+
+.modal-content {
+  display: inline-block;
+}
+
+.modal-content .restart {
+    cursor: pointer;
+}
+
+
+ul.modal-stars {
+    padding-inline-start: 0px;
+    font-size: 1.5em;
 }
