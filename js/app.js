@@ -22,14 +22,13 @@ let minutes = 0;
 
 function startGame() {
   shuffle(icons);
-  movesDisplay.textContent = moves;
-  secondsDisplay.textContent = seconds;
   openCards = [];
   moves = 0;
   seconds = 0;
   minutes = 0;
+  movesDisplay.textContent = moves;
   secondsDisplay.textContent = seconds + "s";
-  minutesSummary.textContent = minutes + "m";
+  minutesDisplay.textContent = minutes + "m";
   matchedCards = [];
 
   for (let j = 0; j < icons.length; j++) {
